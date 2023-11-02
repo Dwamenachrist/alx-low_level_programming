@@ -1,43 +1,81 @@
 #include <stdio.h>
+                
 #include <stdlib.h>
-
+                
+#include "main.h"
+                
+                
 /**
- * main - Entry point
- * @argc: The number of command-line arguments
- * @argv: An array containing the command-line arguments
+                
+ * main - prints the minimum number of coins to
+                
+ * make change for an amount of money
+                
+ * @argc: number of arguments
+                
+ * @argv: array of arguments
+                
  *
- * Return: 0 for success, 1 for error
+                
+ * Return: 0 (Success), 1 (Error)
+                
  */
+                
 int main(int argc, char *argv[])
+                
 {
-    if (argc != 2)
-    {
-        printf("Error\n");
-        return 1;
-    }
-
-    int cents = atoi(argv[1]);
-
-    if (cents < 0)
-    {
-        printf("0\n");
-        return 0;
-    }
-
-    int coins[] = {25, 10, 5, 2, 1};
-    int num_coins = sizeof(coins) / sizeof(coins[0]);
-    int count = 0;
-
-    for (int i = 0; i < num_coins; i++)
-    {
-        while (cents >= coins[i])
+                
+        int num, j, result;
+                
+        int coins[] = {25, 10, 5, 2, 1};
+                
+                
+        if (argc != 2)
+                
         {
-            cents -= coins[i];
-            count++;
+                
+                printf("Error\n");
+                
+                return (1);
+                
         }
-    }
-
-    printf("%d\n", count);
-
-    return 0;
+                
+                
+        num = atoi(argv[1]);
+                
+        result = 0;
+                
+                
+        if (num < 0)
+                
+        {
+                
+                printf("0\n");
+                
+                return (0);
+                
+        }
+                
+                
+        for (j = 0; j < 5 && num >= 0; j++)
+                
+        {
+                
+                while (num >= coins[j])
+                
+                {
+                
+                        result++;
+                
+                        num -= coins[j];
+                
+                }
+                
+        }
+                
+                
+        printf("%d\n", result);
+                
+        return (0);
+                
 }
